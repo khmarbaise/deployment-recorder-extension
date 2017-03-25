@@ -37,10 +37,9 @@ of the build like this:
 [INFO] deployment-recorder-extension Version 0.1.0 started.
 ```
 
-Doing an `mvn deploy` will run without supplemental output except the line as
-mentioned before.
-After the build has finished the file `deployment-recorder.lst` will contain lines
-like this:
+If you do an `mvn deploy` will run without supplemental output except the line
+as mentioned before.  After the build has finished the file
+`deployment-recorder.lst` will contain lines like this:
 
 ```
 com.soebes.examples.j2ee:parent:pom:1.1.2-20170325.120735-41:1.1.2-SNAPSHOT
