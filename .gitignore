@@ -1,0 +1,9 @@
+target
+.project
+.classpath
+.settings
+release.properties
+src
+pom.xml
+.travis.yml
+LICENSE.txt
