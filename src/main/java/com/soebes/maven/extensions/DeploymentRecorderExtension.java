@@ -14,6 +14,7 @@ import javax.inject.Singleton;
 import org.apache.maven.eventspy.AbstractEventSpy;
 import org.apache.maven.execution.ExecutionEvent;
 import org.apache.maven.execution.ExecutionEvent.Type;
+import org.codehaus.plexus.DefaultPlexusContainer;
 import org.eclipse.aether.RepositoryEvent;
 import org.eclipse.aether.RepositoryEvent.EventType;
 import org.eclipse.aether.artifact.Artifact;
@@ -29,16 +30,31 @@ public class DeploymentRecorderExtension
     extends AbstractEventSpy
 {
     private static final String DPRE = "deployment-recorder-extension";
-    
+
     private final Logger LOGGER = LoggerFactory.getLogger( getClass() );
 
     private File rootDirectory;
 
     private List<Artifact> recordedDeploys;
 
+//    @Configuration( value = "deployment-recorder-default.lst" )
+//    private String fileName;
+
+//    @Parameters( defaultValue = "an-other-file.lst" )
+//    private String anOtherFile;
+    
+//    @Parameters
+//    private String moreParameters;
+//    
+//    @Inject
+//    private String injected;
+//    
+//    @Named(value = "test")
+//    private String injectsisu;
+    
     public DeploymentRecorderExtension()
     {
-        LOGGER.debug( "{} ctor called.", DPRE );
+        LOGGER.info( "{} ctor called.", DPRE );
         this.recordedDeploys = new ArrayList<>();
     }
 
@@ -58,6 +74,17 @@ public class DeploymentRecorderExtension
         String multiModuleProjectDirectory = systemProperties.getProperty( "maven.multiModuleProjectDirectory" );
         rootDirectory = new File( multiModuleProjectDirectory );
         LOGGER.debug( "{}: multiModuleProjectDirectory: {}", DPRE, multiModuleProjectDirectory );
+
+        DefaultPlexusContainer contextContain = (DefaultPlexusContainer) context.getData().get( "context" );
+        LOGGER.info( "contextContain: {}", contextContain );
+
+//        LOGGER.info( " fileName: {}", fileName );
+//        LOGGER.info( " anOtherFile: {}", anOtherFile );
+//        LOGGER.info( " moreParameters: {}", moreParameters );
+//        LOGGER.info( " injected: {}", injected );
+//        LOGGER.info( " injectsisu: {}", injectsisu );
+        
+
     }
 
     @Override
@@ -104,7 +131,7 @@ public class DeploymentRecorderExtension
         sb.append( ':' );
         sb.append( artifact.getBaseVersion() );
         // classifier can be != null but empty!
-        if ( artifact.getClassifier() != null && artifact.getClassifier().trim().length() > 0)
+        if ( artifact.getClassifier() != null && artifact.getClassifier().trim().length() > 0 )
         {
             sb.append( ':' );
             sb.append( artifact.getClassifier() );
@@ -150,14 +177,14 @@ public class DeploymentRecorderExtension
 
     private void writeDeploymentRecorderFile()
     {
-        //TODO: Make it configurable?
+        // TODO: Make it configurable?
         File target = new File( this.rootDirectory, "target" );
 
         if ( !target.exists() )
         {
             target.mkdirs();
         }
-        //TODO: Make this name configurable?
+        // TODO: Make this name configurable?
         File recorderFile = new File( target, "deploy-recorder.lst" );
 
         try ( FileWriter fw = new FileWriter( recorderFile ); BufferedWriter bos = new BufferedWriter( fw ) )
@@ -184,6 +211,8 @@ public class DeploymentRecorderExtension
                 break;
 
             case ProjectDiscoveryStarted:
+//                executionEvent.getProject().getDistributionManagement().getSnapshotRepository().getUrl();
+                
             case SessionStarted:
             case ForkStarted:
             case ForkFailed:
@@ -209,3 +238,4 @@ public class DeploymentRecorderExtension
     }
 
 }
+
