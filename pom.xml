@@ -49,21 +49,6 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-component-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven.plugin-tools</groupId>
-      <artifactId>maven-plugin-annotations</artifactId>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.maven</groupId>
-          <artifactId>maven-artifact</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <scope>test</scope>
@@ -89,17 +74,6 @@
       <artifactId>aether-api</artifactId>
       <version>1.0.0.v20140518</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-    <groupId>org.codehaus.plexus</groupId>
-    <artifactId>plexus-container-default</artifactId>
-    <version>1.7.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.eclipse.sisu</groupId>
-      <artifactId>org.eclipse.sisu.plexus</artifactId>
-      <version>0.3.3</version>
     </dependency>
   </dependencies>
   <reporting>
