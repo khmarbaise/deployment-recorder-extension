@@ -14,6 +14,7 @@ import javax.inject.Singleton;
 import org.apache.maven.eventspy.AbstractEventSpy;
 import org.apache.maven.execution.ExecutionEvent;
 import org.apache.maven.execution.ExecutionEvent.Type;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.DefaultPlexusContainer;
 import org.eclipse.aether.RepositoryEvent;
 import org.eclipse.aether.RepositoryEvent.EventType;
@@ -37,10 +38,9 @@ public class DeploymentRecorderExtension
 
     private List<Artifact> recordedDeploys;
 
-//    @Configuration( value = "deployment-recorder-default.lst" )
-//    private String fileName;
+    @Parameter( defaultValue = "an-other-file.lst" )
+    private String fileName;
 
-//    @Parameters( defaultValue = "an-other-file.lst" )
 //    private String anOtherFile;
     
 //    @Parameters
@@ -78,7 +78,7 @@ public class DeploymentRecorderExtension
         DefaultPlexusContainer contextContain = (DefaultPlexusContainer) context.getData().get( "context" );
         LOGGER.info( "contextContain: {}", contextContain );
 
-//        LOGGER.info( " fileName: {}", fileName );
+        LOGGER.info( " fileName: {}", fileName );
 //        LOGGER.info( " anOtherFile: {}", anOtherFile );
 //        LOGGER.info( " moreParameters: {}", moreParameters );
 //        LOGGER.info( " injected: {}", injected );
