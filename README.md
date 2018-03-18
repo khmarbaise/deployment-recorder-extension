@@ -2,7 +2,6 @@
 
 [![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/khmarbaise/deployment-recorder-extension.svg?label=License)](http://www.apache.org/licenses/)
 [![Maven Central](https://img.shields.io/maven-central/v/com.soebes.maven.extensions/deployment-recorder-extension.svg?label=Maven%20Central)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.soebes.maven.extensions%22%20a%3A%22deployment-recorder-extension%22)
-
 [![Build Status](https://travis-ci.org/khmarbaise/deployment-recorder-extension.svg?branch=master)](https://travis-ci.org/khmarbaise/deployment-recorder-extensions)
 
 This is an [EventSpy][1] implementation which collects the information about
