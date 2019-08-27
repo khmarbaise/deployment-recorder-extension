@@ -16,7 +16,7 @@
 # under the License.
 #
 # added comment to trigger build.
-name: XXXX
+name: Deployment-Recorder-Extension
 on:
   push:
     branches:
